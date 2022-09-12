@@ -1,0 +1,25 @@
+---
+title: "Untitled"
+format: html
+---
+
+```{python}
+from CougR import ee_utilities
+
+ee_utilities.gcs_ee_setup(gcs_project = 'Google-Earth-Engine-Project')
+
+ee_utilities.local_shp_to_ee(
+  gcs_bucket = 'earth-engine-assets',
+  file_name = 'Telemetry_Data_2022-09-10.zip',
+  full_file_path ='C:/Users/kdougherty8/Downloads/Telemetry_Data_2022-09-10.zip', 
+  asset_ID = 'users/Kyle_Dougherty/Test'
+  )
+  
+ee_utilities.local_raster_to_ee(
+  gcs_bucket = 'earth-engine-assets',
+  file_name = 'Elevation_Export_LA.tif',
+  full_file_path ='C:/Users/kdougherty8/Downloads/Elevation_Export_LA.tif', 
+  asset_ID = 'users/Kyle_Dougherty/Test_Image'
+  )
+```
+
