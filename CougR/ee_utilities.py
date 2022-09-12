@@ -4,8 +4,16 @@ from google.cloud import storage
 
 
 def gcs_ee_setup(gcs_project):  
+<<<<<<< HEAD
   # Initialize earth engine session and set 
   # default GCS project
+=======
+  # Import ee and os. 
+  # Initialize earth engine session and set 
+  # default GCS project
+  import ee
+  import os
+>>>>>>> 07d5e07bdbae48ccfd4eef858843e1fbc172ab70
   ee.Initialize()
   os.environ.setdefault("GCLOUD_PROJECT", gcs_project)
 
