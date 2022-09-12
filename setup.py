@@ -7,6 +7,5 @@ setuptools.setup(
   author = "Kyle Dougherty", 
   author_email = "kyle.duncan.dougherty@gmail.com",
   packages = ["CougR"],
-  license='MIT',
-  install_requires = ["os", "ee"],
+  license='MIT'
 )
