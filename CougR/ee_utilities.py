@@ -8,20 +8,20 @@ def local_to_ee(gcs_project, bucket, file_name, full_file_path, asset_ID):
   from google.cloud import storage
   import os
   
-  os.environ.setdefault("GCLOUD_PROJECT", gcs_project)
+  os.environ.setdefault("GCLOUD_PROJECT", str(gcs_project))
 
   # Define bucket to store uploaded files
   storage_client = storage.Client()
-  bucket = storage_client.bucket(bucket)
+  bucket = storage_client.bucket(str(bucket))
 
   # Instantiate a blob object in the defined GCS bucket
-  blob = bucket.blob(file_name)
+  blob = bucket.blob(str(file_name))
 
   # Upload local file to GCS
-  blob.upload_from_filename(full_file_path)
+  blob.upload_from_filename(str(full_file_path))
 
   os.system(" ".join([
     "earthengine upload table", 
-    "--asset_id=" + asset_ID,
-    "gs://" + bucket + file_name, 
+    "--asset_id=" + str(asset_ID),
+    "gs://" + str(bucket) + str(file_name), 
     "--force"]))
