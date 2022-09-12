@@ -1,4 +1,4 @@
-def local_to_ee(gcs_project, bucket, file_name, full_file_path, asset_ID): 
+def local_to_ee(gcs_project, gcs_bucket, file_name, full_file_path, asset_ID): 
   # Import ee and geemap
   # Then initialize earth engine session
   import ee
@@ -12,7 +12,7 @@ def local_to_ee(gcs_project, bucket, file_name, full_file_path, asset_ID):
 
   # Define bucket to store uploaded files
   storage_client = storage.Client()
-  bucket = storage_client.bucket(bucket)
+  bucket = storage_client.bucket(gcs_bucket)
 
   # Instantiate a blob object in the defined GCS bucket
   blob = bucket.blob(file_name)
@@ -23,5 +23,5 @@ def local_to_ee(gcs_project, bucket, file_name, full_file_path, asset_ID):
   os.system(" ".join([
     "earthengine upload table", 
     "--asset_id=" + asset_ID,
-    "gs://" + bucket + "/" + file_name, 
+    "gs://" + gcs_bucket + "/" + file_name, 
     "--force"]))
