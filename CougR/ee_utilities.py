@@ -1,4 +1,4 @@
-def local_shp_to_ee(gcs_project, gcs_bucket, file_name, full_file_path, asset_ID): 
+def gcs_ee_setup(gcs_project):  
   # Import ee and geemap
   # Then initialize earth engine session
   import ee
@@ -10,6 +10,8 @@ def local_shp_to_ee(gcs_project, gcs_bucket, file_name, full_file_path, asset_ID
   
   os.environ.setdefault("GCLOUD_PROJECT", gcs_project)
 
+
+def local_shp_to_ee(gcs_bucket, file_name, full_file_path, asset_ID): 
   # Define bucket to store uploaded files
   storage_client = storage.Client()
   bucket = storage_client.bucket(gcs_bucket)
