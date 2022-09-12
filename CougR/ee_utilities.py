@@ -1,4 +1,4 @@
-def local_to_ee(gcs_project, gcs_bucket, file_name, full_file_path, asset_ID): 
+def local_shp_to_ee(gcs_project, gcs_bucket, file_name, full_file_path, asset_ID): 
   # Import ee and geemap
   # Then initialize earth engine session
   import ee
