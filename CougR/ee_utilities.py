@@ -25,3 +25,4 @@ def local_shp_to_ee(gcs_bucket, file_name, full_file_path, asset_ID):
     "--asset_id=" + asset_ID,
     "gs://" + gcs_bucket + "/" + file_name, 
     "--force"]))
+
