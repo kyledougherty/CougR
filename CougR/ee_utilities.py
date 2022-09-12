@@ -23,5 +23,5 @@ def local_to_ee(gcs_project, bucket, file_name, full_file_path, asset_ID):
   os.system(" ".join([
     "earthengine upload table", 
     "--asset_id=" + asset_ID,
-    "gs://" + bucket + file_name, 
+    "gs://" + bucket + "/" + file_name, 
     "--force"]))
