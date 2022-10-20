@@ -30,7 +30,7 @@
 
         -   If pip is installed, you should see some specifications regarding which version you have installed. If not, run the following commands in your terminal:
 
-            -   curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            -   curl <https://bootstrap.pypa.io/get-pip.py> -o get-pip.py
 
             -   py get-pip.py (again may need to swap "py" for "python")
 
@@ -40,7 +40,7 @@
 
         -   Open command line terminal.
 
-        -   Run: py -m pip install CougR (again may need to swap "py" for "python")
+        -   Run: pip install git+<https://github.com/kyledougherty/CougR>
 
     -   To access functions in a Quarto (.qmd) file:
 
@@ -52,4 +52,4 @@
 
                 -   from CougR import ee_utilities
 
-                -    You could then access the local_shp_to_ee function using ee_utilities.local_shp_to_ee()
+                -   You could then access the local_shp_to_ee function using ee_utilities.local_shp_to_ee()
