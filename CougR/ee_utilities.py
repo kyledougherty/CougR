@@ -43,7 +43,7 @@ def local_raster_to_ee(gcs_bucket, file_name, full_file_path, asset_ID):
     "gs://" + gcs_bucket + "/" + file_name, 
     "--force"]))
     
-def ee_raster_reclassification(target_cell_value, raster_layer):
-  target = ee.List(target_cell_value)
-  out = ee.List.`repeat`(1, target.size())
-  reclassified = raster_layer.remap(target, out)
+# def ee_raster_reclassification(target_cell_value, raster_layer):
+#   target = ee.List(target_cell_value)
+#   out = ee.List.`repeat`(1, target.size())
+#   reclassified = raster_layer.remap(target, out)
