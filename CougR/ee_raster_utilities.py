@@ -1,7 +1,13 @@
 import ee 
 
-def ee_raster_reclassification(target_cell_value, raster_layer):
-  target = ee.List(target_cell_value)
-  out = ee.List.repeat(1, target.size())
-  reclassified = raster_layer.remap(target, out)
-  return(reclassified)
+def raster_distance_calculation(image, target): 
+  # Set target cell value
+  reclassification_target = ee.List([target])
+  # Set value of target cells equal to 1
+  out = ee.List.repeat(1, reclassification_target.size())
+  # Remap the image such that target cells have value of 1 
+  reclassified = image.remap(reclassification_target, out)
+  # Using the reclassified image, create distance layer and rename
+  distance = reclassified.fastDistanceTransform(2048).sqrt().multiply(
+    ee.Image.pixelArea().sqrt()).rename("Dist_" + NLCD_Classes[target])
+  return distance
