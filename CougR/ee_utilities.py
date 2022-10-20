@@ -2,7 +2,6 @@ import ee
 import os
 from google.cloud import storage
 
-
 def gcs_ee_setup(gcs_project):  
   # Initialize earth engine session and set 
   # default GCS project
@@ -42,8 +41,3 @@ def local_raster_to_ee(gcs_bucket, file_name, full_file_path, asset_ID):
     "--asset_id=" + asset_ID,
     "gs://" + gcs_bucket + "/" + file_name, 
     "--force"]))
-    
-# def ee_raster_reclassification(target_cell_value, raster_layer):
-#   target = ee.List(target_cell_value)
-#   out = ee.List.`repeat`(1, target.size())
-#   reclassified = raster_layer.remap(target, out)
