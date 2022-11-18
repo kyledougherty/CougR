@@ -32,7 +32,7 @@ def systematic_sample(polygon, layers, scale, folder, file_name):
     folder = folder,
     fileNamePrefix = file_name).start()
     
-def sample_points(points, layers, scale, file_name): 
+def sample_points(points, layers, scale, folder, file_name): 
   
   n_points = points.size().getInfo()
   
@@ -52,4 +52,5 @@ def sample_points(points, layers, scale, file_name):
   return ee.batch.Export.table.toDrive(
     collection = ee.FeatureCollection(Sampled_Points).flatten(),
     description = file_name,
+    folder = folder,
     fileNamePrefix = file_name).start()
