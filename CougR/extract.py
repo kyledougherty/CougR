@@ -34,12 +34,13 @@ def systematic_sample(polygon, layers, scale, folder, file_name):
     
 def sample_points(points, layers, scale, file_name): 
   
-  point_list = points.toList()
+  n_points = points.size().getInfo()
+  
+  point_list = points.toList(n_points)
   
   Sampled_Points = []
-  for offset in list(range(0, point_list.size().getInfo(), 10000)): 
-    point_subset = ee.FeatureCollection(point_list.slice(offset, offset + 10000).map(lambda point:
-      ee.Feature(ee.Geometry.Point(point)).set(point.toDictionary())))
+  for offset in list(range(0, n_points, 10000)): 
+    point_subset = ee.FeatureCollection(point_list.slice(offset, offset + 10000))
     
     sampled_points = layers.reduceRegions(
       collection = point_subset, 
