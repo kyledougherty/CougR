@@ -1,7 +1,7 @@
 fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering", "Directed"),
                     distributions = list(step = "gamma", angle = "wrpcauchy"),
                     initial_step_values = list(15, "75%", "90%"),
-                    inital_turn_values = list(0.05, 0.25, 0.75),
+                    initial_turn_values = list(0.05, 0.25, 0.75),
                     n_simulations, n_tries){
   
   tryCatch({
@@ -83,7 +83,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                                        dist = distributions,
                                        Par=list(step=c(initial_step_values[1], initial_step_values[2], initial_step_values[3], 
                                                        initial_step_values[1], initial_step_values[2], initial_step_values[3]),
-                                                angle = c(inital_turn_values[1], inital_turn_values[2], inital_turn_values[3])),
+                                                angle = c(initial_turn_values[1], initial_turn_values[2], initial_turn_values[3])),
                                        DM = list(step = stepDM, angle = angleDM),
                                        workBounds = list(step = stepworkBounds, angle = angleworkBounds), 
                                        userBounds = list(step = stepBounds, angle = angleBounds))
@@ -148,7 +148,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                                        Par=list(step=c(initial_step_values[1], initial_step_values[2], initial_step_values[3], 
                                                        initial_step_values[1], initial_step_values[2], initial_step_values[3],
                                                        rep(zero_mass, 3)),
-                                                angle = c(inital_turn_values[1], inital_turn_values[2], inital_turn_values[3])),
+                                                angle = c(initial_turn_values[1], initial_turn_values[2], initial_turn_values[3])),
                                        zeroInflation = list(step = TRUE),
                                        DM = list(step = stepDM, angle = angleDM),
                                        workBounds = list(step = stepworkBounds, angle = angleworkBounds), 
@@ -210,7 +210,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                                        dist = distributions,
                                        Par=list(step=c(initial_step_values[1], initial_step_values[2], 
                                                        initial_step_values[1], initial_step_values[2]),
-                                                angle = c(inital_turn_values[1], inital_turn_values[2])),
+                                                angle = c(initial_turn_values[1], initial_turn_values[2])),
                                        DM = list(step = stepDM, angle = angleDM),
                                        workBounds = list(step = stepworkBounds, angle = angleworkBounds), 
                                        userBounds = list(step = stepBounds, angle = angleBounds))
@@ -265,7 +265,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                                        Par=list(step=c(initial_step_values[1], initial_step_values[2], 
                                                        initial_step_values[1], initial_step_values[2],
                                                        rep(zero_mass, 2)),
-                                                angle = c(inital_turn_values[1], inital_turn_values[2])),
+                                                angle = c(initial_turn_values[1], initial_turn_values[2])),
                                        zeroInflation = list(step = TRUE),
                                        DM = list(step = stepDM, angle = angleDM),
                                        workBounds = list(step = stepworkBounds, angle = angleworkBounds), 
