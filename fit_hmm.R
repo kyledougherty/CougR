@@ -81,8 +81,8 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
         # directional persistence and state three has strong directional persistence
         initial_parameters <- getParDM(nbStates = n_states,
                                        dist = distributions,
-                                       Par=list(step=c(initial_step_values[1], quantiles[[initial_step_values[2]]], quantiles[[initial_step_values[3]]], 
-                                                       initial_step_values[1], quantiles[[initial_step_values[2]]], quantiles[[initial_step_values[3]]]),
+                                       Par=list(step=c(initial_step_values[1], quantiles[[initial_step_values[[2]]]], quantiles[[initial_step_values[[3]]]], 
+                                                       initial_step_values[1], quantiles[[initial_step_values[[2]]]], quantiles[[initial_step_values[[3]]]]),
                                                 angle = c(initial_turn_values[1], initial_turn_values[2], initial_turn_values[3])),
                                        DM = list(step = stepDM, angle = angleDM),
                                        workBounds = list(step = stepworkBounds, angle = angleworkBounds), 
@@ -145,8 +145,8 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
         
         initial_parameters <- getParDM(nbStates = n_states,
                                        dist = distributions,
-                                       Par=list(step=c(initial_step_values[1], quantiles[[initial_step_values[2]]], quantiles[[initial_step_values[3]]], 
-                                                       initial_step_values[1], quantiles[[initial_step_values[2]]], quantiles[[initial_step_values[3]]],
+                                       Par=list(step=c(initial_step_values[1], quantiles[[initial_step_values[[2]]]], quantiles[[initial_step_values[[3]]]], 
+                                                       initial_step_values[1], quantiles[[initial_step_values[[2]]]], quantiles[[initial_step_values[[3]]]],
                                                        rep(zero_mass, 3)),
                                                 angle = c(initial_turn_values[1], initial_turn_values[2], initial_turn_values[3])),
                                        zeroInflation = list(step = TRUE),
@@ -208,8 +208,8 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
         # directional persistence and state three has strong directional persistence
         initial_parameters <- getParDM(nbStates = n_states,
                                        dist = distributions,
-                                       Par=list(step=c(quantiles[[initial_step_values[1]]], quantiles[[initial_step_values[2]]],
-                                                       quantiles[[initial_step_values[1]]], quantiles[[initial_step_values[2]]]),
+                                       Par=list(step=c(quantiles[[initial_step_values[[1]]]], quantiles[[initial_step_values[[2]]]],
+                                                       quantiles[[initial_step_values[[1]]]], quantiles[[initial_step_values[[2]]]]),
                                                 angle = c(initial_turn_values[1], initial_turn_values[2])),
                                        DM = list(step = stepDM, angle = angleDM),
                                        workBounds = list(step = stepworkBounds, angle = angleworkBounds), 
@@ -262,8 +262,8 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
         
         initial_parameters <- getParDM(nbStates = n_states,
                                        dist = distributions,
-                                       Par=list(step=c(quantiles[[initial_step_values[1]]], quantiles[[initial_step_values[2]]],
-                                                       quantiles[[initial_step_values[1]]], quantiles[[initial_step_values[2]]],
+                                       Par=list(step=c(quantiles[[initial_step_values[[1]]]], quantiles[[initial_step_values[[2]]]],
+                                                       quantiles[[initial_step_values[[1]]]], quantiles[[initial_step_values[[2]]]],
                                                        rep(zero_mass, 2)),
                                                 angle = c(initial_turn_values[1], initial_turn_values[2])),
                                        zeroInflation = list(step = TRUE),
