@@ -11,10 +11,10 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
       filter(!is.na(step)) %>%
       pull(step)
     
-    # Get quantiles and zero mass value, desigm matrices 
+    # Get quantiles and zero mass value, design matrices 
     # will be different depending on if the zero mass 
-    # parameter is needed or not
-    quantiles = quantile(steps, seq(0, 1, 0.01))
+    # parameter is needed or not. Omit 0 steps from quantiles
+    quantiles = quantile(na_if(steps, 0), seq(0, 1, 0.01), na.rm = TRUE)
     zero_mass = length(steps[steps == 0])/length(steps)
     
     if(n_states == 3){
