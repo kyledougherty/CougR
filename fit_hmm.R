@@ -5,7 +5,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                     n_simulations, n_tries){
   
   tryCatch({
-    # Prep imputed data and pull step lengths
+    # Prep imputed data and pull step lengths 
     steps <- prepData(data) %>% 
       as_tibble() %>% 
       filter(!is.na(step)) %>%
