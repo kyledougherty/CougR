@@ -290,7 +290,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                            prior = prior,
                            stateNames = state_names)
     
-    print(paste("Completed:", unique(str_remove_all(names(data$crwFits), "\\..*)), "at", Sys.time()))
+    print(paste("Completed:", unique(str_remove_all(names(data$crwFits), "\\..*")), "at", Sys.time()))
 
     return(hmm_result)
     
