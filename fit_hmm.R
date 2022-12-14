@@ -294,6 +294,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
     id = unique(str_remove_all(names(data$crwFits), "\\..*"))
     print(paste("Completed:", id, "at", Sys.time()))
     
+    dir.create(output_dir)
     saveRDS(hmm_result, 
             paste0(output_dir, 
                    "/HMM_Results_", id, ".RDS"))
