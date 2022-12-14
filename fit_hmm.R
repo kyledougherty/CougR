@@ -2,8 +2,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                     distributions = list(step = "gamma", angle = "wrpcauchy"),
                     initial_step_values = list(15, "75%", "90%"),
                     initial_turn_values = list(0.05, 0.25, 0.75),
-                    n_simulations, n_tries, 
-                    output_dir = paste0("HMM_Results/HMM_Results_", Sys.Date())){
+                    n_simulations, n_tries){
   
   tryCatch({
     # Prep imputed data and pull step lengths 
@@ -294,11 +293,6 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
     id = unique(str_remove_all(names(data$crwFits), "\\..*"))
     print(paste("Completed:", id, "at", Sys.time()))
     
-    dir.create(output_dir)
-    saveRDS(hmm_result, 
-            paste0(output_dir, 
-                   "/HMM_Results_", id, ".RDS"))
-
     return(hmm_result)
     
   }, error = function(e){
