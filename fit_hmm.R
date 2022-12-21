@@ -275,6 +275,9 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
       
     }
     
+    id = unique(str_remove_all(names(data$crwFits), "\\..*"))
+    print(paste("Started:", id, "at", Sys.time()))
+    
     prior = function(par){sum(dnorm(par,0,10,log=TRUE))}
     
     hmm_result <- MIfitHMM(data, 
@@ -290,7 +293,7 @@ fit_hmm <- function(data, n_states = 3, state_names = c("Encamped", "Meandering"
                            prior = prior,
                            stateNames = state_names)
     
-    id = unique(str_remove_all(names(data$crwFits), "\\..*"))
+    
     print(paste("Completed:", id, "at", Sys.time()))
     
     return(hmm_result)
