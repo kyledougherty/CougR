@@ -1,5 +1,5 @@
 summarise_rsf <- function(model, unrescaled_data, confint_type = "Wald", 
-                          random_effects = list("ID", "Year")){
+                          random_effects = c("ID", "Year")){
   terms = rownames(summary(model)$coefficients)[-1]
   
   mean_used_available = unrescaled_data %>% 
