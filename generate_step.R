@@ -17,6 +17,6 @@ generate_step <- function(initial_lat, initial_long, bearing, distance_meters){
                                     cos(distance_radians) - sin(initial_lat)*sin(final_lat))
   
   # Convert the destination point from radians to LAT/LONG
-  return(c(LAT = final_lat * 180/pi, 
-           LONG = final_long * 180/pi))
+  tibble(LAT = final_lat * 180/pi, 
+         LONG = final_long * 180/pi)
 }
