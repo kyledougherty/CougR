@@ -1,7 +1,7 @@
 library(tidyverse)
 library(broom)
 
-summarize_ssf <- function(model){
+summarise_ssf <- function(model){
   
   AIC = tibble(Formula = paste(names(model$coefficients), collapse = "+"), 
                LogLik = as.numeric(logLik(model)), 
