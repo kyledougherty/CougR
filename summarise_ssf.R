@@ -1,12 +1,13 @@
 library(tidyverse)
 library(broom)
+source("https://raw.githubusercontent.com/kyledougherty/CougR/main/qic.R")
 
 summarise_ssf <- function(model){
   
-  AIC = tibble(Formula = paste(names(model$coefficients), collapse = "+"), 
+  QIC = tibble(Formula = paste(names(model$coefficients), collapse = "+"), 
                LogLik = as.numeric(logLik(model)), 
                DF = attributes(logLik(model))$df, 
-               AICc = AICc(model))
+               QIC = qic(model))
   
   model_summary = tidy(model) %>%
     select(-statistic) %>%
@@ -17,6 +18,6 @@ summarise_ssf <- function(model){
                 select(term, contains("95")), 
               by = "term")
   
-  AIC %>%
+  QIC %>%
     mutate(Summary = list(model_summary))
 }
