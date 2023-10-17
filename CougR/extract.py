@@ -1,5 +1,38 @@
 import ee
 
+def systematic_sample_proj(polygon, layers, scale, folder, file_name, proj, x = "x", y = "y"): 
+  
+  lat_long = ee.Image.pixelCoordinates(proj)
+  
+  coordinates = lat_long.select([x, y]).reduceRegion(
+    reducer = ee.Reducer.toList(),
+    geometry = polygon.geometry(),
+    scale = scale,
+    maxPixels = 1e13)
+  
+  X = ee.List(coordinates.get(x))
+  Y = ee.List(coordinates.get(y))
+  
+  point_list = X.zip(Y)
+  
+  Sampled_Points = []
+  for offset in list(range(0, point_list.size().getInfo(), 10000)): 
+    point_grid = ee.FeatureCollection(point_list.slice(offset, offset + 10000).map(lambda point:
+      ee.Feature(
+        ee.Geometry.Point(
+          coords = point, 
+          proj = proj))\
+      .set(polygon.toDictionary())))
+
+    sampled_points = layers.reduceRegions(collection = point_grid, reducer = ee.Reducer.first())
+    Sampled_Points.append(sampled_points) 
+    
+  return ee.batch.Export.table.toDrive(
+    collection = ee.FeatureCollection(Sampled_Points).flatten(),
+    description = file_name,
+    folder = folder,
+    fileNamePrefix = file_name).start()
+
 def systematic_sample(polygon, layers, scale, folder, file_name): 
   
   image = layers.clip(polygon)
