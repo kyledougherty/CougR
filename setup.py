@@ -2,7 +2,7 @@ import setuptools
 
 setuptools.setup(
   name = "CougR", 
-  version = "0.0.6", 
+  version = "0.0.7", 
   url = "https://github.com/kyledougherty/CougR", 
   author = "Kyle Dougherty", 
   author_email = "kyle.duncan.dougherty@gmail.com",
