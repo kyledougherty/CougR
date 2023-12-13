@@ -1,37 +1,37 @@
 library(tidyverse)
 library(terra)
 
-run_circuitscape <- function(dir = NULL, 
-                             version = "4.0.5",
-                             data_type = "raster",
-                             scenario = "pairwise",
-                             use_included_pairs = "False",
-                             habitat_file = "Prediction.tif",
-                             point_file = "Nodes.tif",
-                             habitat_map_is_resistances = "False", 
-                             connect_using_avg_resistances = "False",
-                             connect_four_neighbors_only = "False",
-                             low_memory_mode = "True",
-                             parallelize = "False",
-                             solver = "cholmod",
-                             print_timings = 1,
-                             preemptive_memory_release = "False",
-                             print_rusages = "False",
-                             max_parallel = 0,
-                             mask_file = "None",
-                             use_mask = "False",
-                             set_null_currents_to_nodata = "False",
-                             set_focal_node_currents_to_zero = "False",
-                             set_null_voltages_to_nodata = "False",
-                             compress_grids = "False",
-                             write_cur_maps = 1,
-                             write_volt_maps = 0,
-                             write_cum_cur_map_only = "False",
-                             log_transform_maps = "False",
-                             write_max_cur_maps = "True",
-                             log_level = "INFO",
-                             screenprint_log = "False"){
-
+write_ini <- function(dir = NULL, 
+                      version = "4.0.5",
+                      data_type = "raster",
+                      scenario = "pairwise",
+                      use_included_pairs = "False",
+                      habitat_file = "Prediction.tif",
+                      point_file = "Nodes.tif",
+                      habitat_map_is_resistances = "False", 
+                      connect_using_avg_resistances = "False",
+                      connect_four_neighbors_only = "False",
+                      low_memory_mode = "True",
+                      parallelize = "False",
+                      solver = "cholmod",
+                      print_timings = 1,
+                      preemptive_memory_release = "False",
+                      print_rusages = "False",
+                      max_parallel = 0,
+                      mask_file = "None",
+                      use_mask = "False",
+                      set_null_currents_to_nodata = "False",
+                      set_focal_node_currents_to_zero = "False",
+                      set_null_voltages_to_nodata = "False",
+                      compress_grids = "False",
+                      write_cur_maps = 1,
+                      write_volt_maps = 0,
+                      write_cum_cur_map_only = "False",
+                      log_transform_maps = "False",
+                      write_max_cur_maps = "True",
+                      log_level = "INFO",
+                      screenprint_log = "False"){
+  
   write_lines(paste(paste0("[Version]\n",
                            "version = ", version),
                     paste0("[Circuitscape mode]",
@@ -75,13 +75,5 @@ run_circuitscape <- function(dir = NULL,
                            "screenprint_log = ", screenprint_log),
                     sep = "\n\n"),
               paste0(dir, "/Circuitscape_Initialization.ini"))
-  
-  if(JuliaCall::julia_installed_package("Circuitscape") == "nothing"){
-    JuliaCall::julia_command('Pkg.add("Circuitscape")')
-  }
-
-  JuliaCall::julia_command(paste0("cd(", dir, ")"))
-  JuliaCall::julia_command('using Circuitscape')
-  JuliaCall::julia_command('compute("Circuitscape_Initialization.ini")')
   
 }
