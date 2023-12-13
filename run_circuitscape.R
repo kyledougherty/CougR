@@ -3,6 +3,7 @@ library(terra)
 
 run_circuitscape <- function(dir = NULL, 
                              version = "4.0.5",
+                             data_type = "raster",
                              scenario = "pairwise",
                              use_included_pairs = "False",
                              point_file = "Nodes.tif",
